@@ -6,7 +6,11 @@
 </div>
 
 <div>
-    <%=  posts %>
+    <% posts.forEach((post) => { %>
+        <li>
+            <%= post.title %>
+        </li>
+    <% }) %>
 </div>
 
 
