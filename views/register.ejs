@@ -1,0 +1,47 @@
+<% include ./partials/header %>
+
+<div class="container">
+    <h1>Please Sign Up</h1>
+    <div class="row new-post-row">
+        <form action='/login' method='POST'>
+            <div class="form-group">
+                <input class="form-control" type='text' name='name' placeholder='name'>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type='text' name='username' placeholder='username'>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" type='email' name='email' placeholder='email'>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type='text' name='phone' placeholder='1-770-736-8031'>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type='text' name='website' placeholder='hildegard.org'>
+            </div>
+
+            <fieldset>
+                <legend>User Address</legend>
+                <input class="form-control" type='text' name='street' placeholder='street'>
+                <input class="form-control" type='text' name='suite' placeholder='Apt. 556'>
+                <input class="form-control" type='text' name='city' placeholder='city'>
+                <input class="form-control" type='text' name='zipcode' placeholder='zipcode'>
+            </fieldset>
+
+            <fieldset>
+                <legend>User Company</legend>
+                <input class="form-control" type='text' name='companyName' placeholder='companyName'>
+                <input class="form-control" type='text' name='catchPhrase' placeholder='catchPhrase'>
+                <input class="form-control" type='text' name='bs' placeholder='bs'>
+            </fieldset>
+
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary new-post-button">Sign Up</button>
+            </div>
+            <a href="/posts">Go Back</a>
+        </form>
+    </div>
+</div>
+
+<% include ./partials/footer %>

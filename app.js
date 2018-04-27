@@ -64,7 +64,7 @@ app.post('/posts', (req, res) => {
 })
 
 //New Post form rout
-app.get('/posts/new', (req, res) => {
+app.get('/posts/new',isLoggedIn, (req, res) => {
     res.render('new.ejs')
 })
 
@@ -98,6 +98,35 @@ app.get('/logout', (req, res) => {
     currentUser = null
     res.redirect('/')
 })
+//Sign Up form
+app.get('/register', (req, res) => {
+    res.render('register')
+})
+//Sign Up logic
+app.post('/register', (req, res) => {
+    let name = req.body.name,
+        username = req.body.username,
+        email = req.body.email,
+        phone = req.body.phone,
+        website = req.body.website,
+        street = req.body.address.street,
+        suite = req.body.address.suite,
+        city = req.body.address.city,
+        zipcode = req.body.address.zipcode,
+        companyName = req.body.company.companyName,
+        catchPhrase = req.body.company.catchPhrase,
+        bs = req.body.company.bs,
+        address = {street:street, suite:suite, city:city, zipcode:zipcode},
+        company = {companyName:companyName, catchPhrase:catchPhrase, bs:bs}
+        newUser = {name:name, username:username, email:email, phone:phone, website:website, address:address, company:company}
+    users.push(newUser)
+    console.log(newUser)
+    console.log(users)
+    res.redirect('/posts')
+})
+
+
+
 //middle ware
 function isLoggedIn(req, res, next){
     if(currentUser !== null){
