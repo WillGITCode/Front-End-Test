@@ -2,3 +2,20 @@ body{
     background-color: aquamarine;
     text-align: center;
 }
+
+.btn-post{
+    color: whitesmoke;
+}
+
+.btn-post:hover{
+    color: black;
+}
+
+.new-post-row{
+    width: 30%;
+    margin: 50px auto;
+}
+
+.new-post-button{
+    width:100%;
+}

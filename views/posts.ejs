@@ -1,18 +1,25 @@
 <% include ./partials/header %>
 
-<div class="jumbotron">
-    <h1>This Is The Show Page</h1>
-    <p>lots of stuff!</p>
-</div>
+<div class="container">
+    <header class="jumbotron">
+        <h1>This Is The Show Page</h1>
+        <p>lots of stuff!</p>
+        <h3 class="btn btn-primary"><a class="btn-post" href="/posts/new">Add New Post</a></h3>
+    </header>
 
-
-<% posts.forEach((post) => { %>
-    <div>
-        <h4><%= post.title %></h4>
-        <p><%= post.body %></p>
+    <div class="row" style="display: flex; flex-wrap: wrap;">
+        <% posts.forEach((post) => { %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <h4><%= post.title %></h4>
+                    <div class="caption">
+                        <p><%= post.body %></p>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
     </div>
-<% }) %>
 
-
+</div>
 
 <% include ./partials/footer %>

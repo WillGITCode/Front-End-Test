@@ -1,11 +1,22 @@
 <% include ./partials/header %>
 
-<h1>Create new post</h1>
+<div class="container">
+    <h1>Create new post</h1>
+    <div class="row new-post-row">
+        <form action='/posts' method='POST'>
+            <div class="form-group">
+                <input class="form-control" type='text' name='title' placeholder='Post Title'>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type='text' name='body' placeholder='Post Content'>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary new-post-button">Submit</button>
+            </div>
+            <a href="/posts">Go Back</a>
+        </form>
 
-<form action='/posts' method='POST'>
-    <input type='text' name='title' placeholder='Post Title'>
-    <input type='text' name='body' placeholder='Post Content'>
-    <button>Submit</button>
-</form>
-
+        
+    </div>
+</div>
 <% include ./partials/footer %>
