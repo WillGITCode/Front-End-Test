@@ -9,23 +9,6 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}))
 app.set('view engine', 'ejs')
 
-
-//Set up temp server data using api
-//example Shcema
-
-// let posts = [{
-//      userId: 1,
-//      id: 99,
-//      title: 'ja;fkhjglhlk jlkjalffhjggl   alfghlj',
-//      body: 'urljlajgfg jpadfjgljfg ljlfkjg jlkjlfgjlkj'   
-//     },
-//     {
-//      userId: 1,    
-//      id: 99,
-//      title: '5645     45664         457464',
-//      body: 'fhj hjsfgh jpadfjgljfg ljlfkjg jlkjlfgjlkjjs'
-//     }]
-
 let users,
     posts,
     albums,
@@ -42,6 +25,13 @@ fetch('https://jsonplaceholder.typicode.com/users')
 
 let currentUser = null;
 
+//middleware function
+//passes user info between routes
+app.use(function(req, res, next) {
+    res.locals.currentUser = currentUser;
+    next();
+});
+
 //Landing rout
 app.get('/', (req, res) => {
     res.render('landing')
@@ -49,6 +39,7 @@ app.get('/', (req, res) => {
 
 //Show posts rout
 app.get('/posts', (req, res) => {
+    console.log(currentUser)
     res.render('posts', {posts:posts})
 })
 
@@ -81,7 +72,6 @@ app.post('/login', (req, res) => {
     let isUser = false;
     //check if user exists
     for(const k in users) {
-        console.log(users[k].username)
         if(users[k].username === userCheck){
             currentUser = userCheck
             isUser = true;
@@ -109,19 +99,18 @@ app.post('/register', (req, res) => {
         email = req.body.email,
         phone = req.body.phone,
         website = req.body.website,
-        street = req.body.address.street,
-        suite = req.body.address.suite,
-        city = req.body.address.city,
-        zipcode = req.body.address.zipcode,
-        companyName = req.body.company.companyName,
-        catchPhrase = req.body.company.catchPhrase,
-        bs = req.body.company.bs,
+        street = req.body.street,
+        suite = req.body.suite,
+        city = req.body.city,
+        zipcode = req.body.zipcode,
+        companyName = req.body.companyName,
+        catchPhrase = req.body.catchPhrase,
+        bs = req.body.bs,
+        id = users.length +1,
         address = {street:street, suite:suite, city:city, zipcode:zipcode},
         company = {companyName:companyName, catchPhrase:catchPhrase, bs:bs}
-        newUser = {name:name, username:username, email:email, phone:phone, website:website, address:address, company:company}
+        newUser = {id:id, name:name, username:username, email:email, phone:phone, website:website, address:address, company:company}
     users.push(newUser)
-    console.log(newUser)
-    console.log(users)
     res.redirect('/posts')
 })
 
