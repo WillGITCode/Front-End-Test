@@ -36,6 +36,12 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 .then(response => response.json()
 .then(data => posts = data))
 
+fetch('https://jsonplaceholder.typicode.com/users')
+.then(res => res.json()
+.then(data => users = data))
+
+let currentUser = null;
+
 //Landing rout
 app.get('/', (req, res) => {
     res.render('landing')
@@ -63,6 +69,41 @@ app.get('/posts/new', (req, res) => {
 })
 
 
-
+//Login Routes
+//=========================================//
+//Login form
+app.get('/login', (req, res) => {
+    res.render('login')
+})
+//login logic
+app.post('/login', (req, res) => {
+    let userCheck = req.body.username
+    let isUser = false;
+    //check if user exists
+    for(const k in users) {
+        console.log(users[k].username)
+        if(users[k].username === userCheck){
+            currentUser = userCheck
+            isUser = true;
+        }
+    }
+    if(isUser === true){
+        res.redirect('/posts')
+    }else{
+        res.redirect('/login')
+    }
+})
+//logout logic
+app.get('/logout', (req, res) => {
+    currentUser = null
+    res.redirect('/')
+})
+//middle ware
+function isLoggedIn(req, res, next){
+    if(currentUser !== null){
+        return next()
+    }
+    res.redirect('/login')
+}
 
 app.listen(3000, () => console.log('Font-End Test Server Started!'))
