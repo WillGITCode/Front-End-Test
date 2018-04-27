@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+
+<div class="jumbotron">
+    <h1>This Is The Show Page</h1>
+    <p>lots of stuff!</p>
+</div>
+
+
+<% posts.forEach((post) => { %>
+    <div>
+        <h4><%= post.title %></h4>
+        <p><%= post.body %></p>
+    </div>
+<% }) %>
+
+
+
+<% include ./partials/footer %>
