@@ -1,8 +1,8 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
 <div class="container">
     <header class="jumbotron">
-        <h1>This Is The Show Page</h1>
+        <h1>This Is The Index Page</h1>
         <p>lots of stuff!</p>
         <h3 class="btn btn-primary"><a class="btn-post" href="/posts/new">Add New Post</a></h3>
     </header>
@@ -15,6 +15,7 @@
                     <div class="caption">
                         <p><%= post.body %></p>
                     </div>
+                    <p><a href="/posts/<%= post.id %>" class="btn btn-xs btn-primary">Look Closer</a></p>
                 </div>
             </div>
         <% }) %>
@@ -22,4 +23,4 @@
 
 </div>
 
-<% include ./partials/footer %>
+<% include ../partials/footer %>

@@ -10,10 +10,11 @@ fetch('https://jsonplaceholder.typicode.com/users')
 
 //Landing rout
 router.get('/', (req, res) => {
-    req.session.currentUser = null
     res.render('landing')
 })
 
+
+//Auth routes
 //Login Routes
 //=========================================//
 //Login form
@@ -38,15 +39,18 @@ router.post('/login', (req, res) => {
         res.redirect('/login')
     }
 })
+
 //logout logic
 router.get('/logout', (req, res) => {
     req.session.currentUser = null
     res.redirect('/')
 })
+
 //Sign Up form
 router.get('/register', (req, res) => {
     res.render('register')
 })
+
 //Sign Up logic
 router.post('/register', (req, res) => {
     let name = req.body.name,

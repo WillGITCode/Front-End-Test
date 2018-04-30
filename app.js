@@ -5,9 +5,10 @@ const bodyParser    = require('body-parser')
 //TODO find out why 
 const fetch         = require('node-fetch');
 
-const postRoutes    = require('./routes/posts'),
-      commentRoutes = require('./routes/comments'),
-      indexRoutes   = require('./routes/index')
+const commentRoutes = require("./routes/comments"),
+      postsRoutes = require("./routes/posts"),
+      indexRoutes = require("./routes/index"),
+      userRoutes = require("./routes/users");
 
 
 app.use(express.static("public"));
@@ -29,8 +30,9 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(indexRoutes)
-app.use(postRoutes)
-app.use(commentRoutes)
+app.use(indexRoutes);
+app.use("/posts", postsRoutes);
+app.use("/posts/:id/comments", commentRoutes);
+app.use("/users", userRoutes);
 
 app.listen(3000, () => console.log('Font-End Test Server Started!'))
