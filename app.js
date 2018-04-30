@@ -25,7 +25,6 @@ app.use(require("express-session")({
 //middleware function
 //passes user info between routes
 app.use(function(req, res, next) {
-    console.log(req.session.currentUser)
         res.locals.currentUser = req.session.currentUser
     next();
 });
