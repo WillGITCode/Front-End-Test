@@ -1,9 +1,6 @@
 const express       = require('express')
 const app           = express()
 const bodyParser    = require('body-parser')
-//Installed node-fetch because fetch didn't work in node enviroment
-//TODO find out why 
-const fetch         = require('node-fetch');
 
 const commentRoutes = require("./routes/comments"),
       postsRoutes = require("./routes/posts"),

@@ -13,10 +13,10 @@
                         </em>
                     </p>
                     
-                    <% if(currentUser && post.user.username == currentUser){ %>
+                    <% if(currentUser && post.user.username == currentUser.username){ %>
                         <div class="text-right">
-                            <a class="btn btn-warning btn-edit-delete" href="/posts/<%= post._id %>/edit">Edit</a>
-                            <form class="delete-form btn-edit-delete" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                            <a class="btn btn-warning btn-edit-delete" href="/posts/<%= post.id %>/edit">Edit</a>
+                            <form class="delete-form btn-edit-delete" action="/posts/<%= post.id %>?_method=DELETE" method="POST">
                                 <button class="btn btn-danger">Delete</button>
                             </form>
                         </div>

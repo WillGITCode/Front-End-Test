@@ -29,7 +29,7 @@ router.post('/login', (req, res) => {
     for(const k in users) {
         if(users[k].username === userCheck){
             // currentUser = userCheck
-            req.session.currentUser = userCheck
+            req.session.currentUser = users[k]
             isUser = true;
         }
     }
