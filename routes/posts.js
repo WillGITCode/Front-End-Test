@@ -31,37 +31,24 @@ router.get('/new',middleware.isLoggedIn, (req, res) => {
     res.render('posts/new')
 })
 
-// .then(fetch('https://jsonplaceholder.typicode.com/posts/' + req.params.id + '/comments'))
-    // .then(response => response.json())
-    // .then(json => post.push(json))
-    // .then(post => console.log(post))
-    // .catch(err => console.error('Request failed', err)))
-
-    //Get post comments
-    //equivalent to /comments?postId=1
-    //  fetch('https://jsonplaceholder.typicode.com/posts/' + req.params.id + '/comments')
-    //  .then(response => response.json())
-    //  .then(json => console.log(json))
-
 //Show post rout
 router.get('/:id', (req, res) => {
+    //variable to store view page info
     let post
-
     //Get post details
     fetch('https://jsonplaceholder.typicode.com/posts/' + req.params.id)
     .then(response => response.json())
     .then(data => post = data)
+    //Get user details
     .then(() => fetch('https://jsonplaceholder.typicode.com/users/' + post.userId))
     .then(response => response.json())
     .then(data => post.user = data)
+    //Get comments on post
     .then(() => fetch('https://jsonplaceholder.typicode.com/posts/' + req.params.id + '/comments'))
     .then(response => response.json())
     .then(data => post.comments = data)
-    .then(() => console.log(post))
-    
-
+    //Render view show page
     .then(() => res.render('posts/show', {post:post}))
-
 })
 
 
