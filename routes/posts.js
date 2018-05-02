@@ -6,7 +6,8 @@ const fetch         = require('node-fetch')
 const middleware    = require("../middleware");
 
 //This code is outside of Show index rout because Api doesn't update resources
-//this is not how a real app would work, however, it makes a better demo
+//This is not how a real app would work, however, it makes a better demo
+//The app makes the required requests aswell
 //=====================================================//
 let posts = []
 
@@ -84,14 +85,56 @@ router.get("/:id/edit", function(req, res) {
 
 //Post edited campground rout
 router.post("/:id", function(req, res) {
-    console.log(req.body)
-    res.render('posts/index', {posts:posts})
+    
+    //get data from form
+    let title = req.body.title
+    let body = req.body.body
+    let userId = res.locals.currentUser.id
+    let id = parseInt(req.params.id)
+    let newPost = {title:title, body:body, userId:userId, id:id}
+    //Change post object in global array because API doesn't actually create or update resources
+    //This will at least make it look legit in the app for demo purposes
+    posts.forEach((post) => {
+        if(post.id == id){
+            posts[id-1] = newPost
+        }
+    })
+
+    // POST adds a random id to the object sent
+    fetch('https://jsonplaceholder.typicode.com/posts/' + req.params.id, {
+        method: 'PUT',
+        body: JSON.stringify({
+            id: id,
+            title: title,
+            body: body,
+            userId: res.locals.currentUser.id
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    .then(response => response.json())
+    .then(res.redirect('/posts'))
 })
 
 //Destroy Post Rout
 router.delete("/:id", function(req, res) {
-    console.log(req.body)
-    res.render('posts/index')
+    let id = parseInt(req.params.id)
+    //Change post object in global array because API doesn't actually create or update resources
+    //This will at least make it look legit in the app for demo purposes
+    posts.forEach((post) => {
+        if(post.id == id){
+            //delete posts[id]
+            posts.splice(id-1, 1)
+        }
+    })
+    //TODO figure out why above code leaves a hole in array
+
+
+    fetch('https://jsonplaceholder.typicode.com/posts/' + req.params.id , {
+        method: 'DELETE'
+    })
+    .then(res.redirect('/posts'))
 })
 
 

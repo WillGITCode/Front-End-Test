@@ -1,5 +1,6 @@
 body{
     background-color: aquamarine;
+    background: linear-gradient(to bottom right, #000000 0%, #000066 100%);
     text-align: center;
 }
 
@@ -27,8 +28,16 @@ body{
     margin: 50px auto;
 }
 
+@media screen and (max-width: 1000px) {
+    .new-post-row{
+        width: 90%;
+    }
+}
+
 .new-post-button{
     width:100%;
 }
+
+
 
 

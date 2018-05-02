@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <h1>These Are Our Current Users</h1>
+    </header>
+
+    <div class="row" style="display: flex; flex-wrap: wrap;">
+        <% users.forEach((user) => { %>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                    <h4><%= user.name %></h4>
+                    <div class="caption">
+                        <p>AKA: <%= user.username %></p>
+                        <p><%= user.email %></p>
+                        <p>From <%= user.address.city %></p>
+                        <p>Visit their website at</p>
+                        <a href="#"><%= user.website %></a>
+                    </div>
+                    <p><a href="/albums/<%= user.id %>" class="btn btn-xs btn-primary">Check Out Their Photos</a></p>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+</div>
+
+<% include ../partials/footer %>
