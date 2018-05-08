@@ -9,7 +9,7 @@ const commentRoutes = require("./routes/comments"),
       photoRoutes = require("./routes/photos"),
       userRoutes = require("./routes/users");
 
-
+app.set('port', (process.env.PORT || 3000))
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}))
 app.set('view engine', 'ejs')
@@ -35,4 +35,4 @@ app.use("/users", userRoutes)
 app.use("/albums", albumRoutes)
 app.use("/photos", photoRoutes)
 
-app.listen(3000, () => console.log('Font-End Test Server Started!'))
+app.listen(app.get('port'), () => console.log('Font-End Test Server Started!'))
