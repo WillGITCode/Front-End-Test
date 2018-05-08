@@ -48,7 +48,4 @@ router.post('/', (req, res) => {
     .then(res.redirect('/posts'))
 })
 
-
-
-
 module.exports = router

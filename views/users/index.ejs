@@ -9,15 +9,13 @@
         <% users.forEach((user) => { %>
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="thumbnail">
-                    <h4><%= user.name %></h4>
                     <div class="caption">
-                        <p>AKA: <%= user.username %></p>
-                        <p><%= user.email %></p>
+                        <p><%= user.username %></p>
                         <p>From <%= user.address.city %></p>
-                        <p>Visit their website at</p>
-                        <a href="#"><%= user.website %></a>
+                        <p>Visit their website at  <a href="#"><%= user.website %></a></p>
                     </div>
-                    <p><a href="/albums/<%= user.id %>" class="btn btn-xs btn-primary">Check Out Their Photos</a></p>
+                    <a href="/users/<%= user.id %>" class="btn btn-xs btn-primary">Profile</a>
+                    <a href="/photos?userId=<%= user.id %>" class="btn btn-xs btn-primary">Photo Albums</a>
                 </div>
             </div>
         <% }) %>

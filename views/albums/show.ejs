@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+
+<div class="container">
+   
+    <div class="col-md-12">
+        <div class="thumbnail">
+            <h4><%= album.title %></h4>
+        </div>
+            <div class="row" style="display: flex; flex-wrap: wrap;">
+            <% photos.forEach((photo) => { %>
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h5><%= photo.title %></h5>
+                        <img class="img-responsive photo-thumbnail" src="<%= photo.thumbnailUrl %>">
+                    </div>
+                    <a href="/photos/<%= photo.id %>" class="btn btn-xs btn-primary">Look Closer</a>
+                </div>
+            </div>
+        <% }) %>
+        </div>
+    </div>   
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <h1>This Is The Albums Page</h1>
+    </header>
+
+    <div class="row" style="display: flex; flex-wrap: wrap;">
+        <% albums.forEach((album) => { %>
+            <div class="col-md-3 col-sm-6">
+                <div class="thumbnail">
+                    <h4><%= album.title %></h4>
+                    <p><a href="/albums/<%= album.id %>" class="btn btn-xs btn-primary">Look Closer</a></p>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+</div>
+
+<% include ../partials/footer %>

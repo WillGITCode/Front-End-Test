@@ -5,6 +5,8 @@ const bodyParser    = require('body-parser')
 const commentRoutes = require("./routes/comments"),
       postsRoutes = require("./routes/posts"),
       indexRoutes = require("./routes/index"),
+      albumRoutes = require("./routes/albums"),
+      photoRoutes = require("./routes/photos"),
       userRoutes = require("./routes/users");
 
 
@@ -26,9 +28,11 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.use(indexRoutes);
-app.use("/posts", postsRoutes);
-app.use("/posts/:id/comments", commentRoutes);
-app.use("/users", userRoutes);
+app.use(indexRoutes)
+app.use("/posts", postsRoutes)
+app.use("/posts/:id/comments", commentRoutes)
+app.use("/users", userRoutes)
+app.use("/albums", albumRoutes)
+app.use("/photos", photoRoutes)
 
 app.listen(3000, () => console.log('Font-End Test Server Started!'))

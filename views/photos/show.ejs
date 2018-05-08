@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+
+<div class="container">
+   
+    <div class="col-md-12">
+        <div class="thumbnail">
+            <h4><%= photo.title %></h4>
+        </div>
+            <div class="row" style="display: flex; flex-wrap: wrap;">
+            <div class="col-xs-12">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <img class="img-responsive photo-thumbnail" src="<%= photo.url %>">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+</div>
+
+<% include ../partials/footer %>
