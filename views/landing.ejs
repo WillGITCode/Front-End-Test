@@ -1,5 +1,33 @@
-<h1>Landing Page</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+    </head>
+    <body style="height: 100vh;">
 
-<p>Welcome To My App!</p>
+    <div class="container">
+        <header class="jumbotron" style="margin-top: 50px">
+            <h1>Landing Page</h1>
 
-<a href="/posts">View ShowPage</a>
+            <p>Welcome To My App!</p>
+
+            <a href="/posts">View ShowPage</a>    
+        </header>
+        <div class="row new-post-row">
+        <h1>Or Login</h1>
+            <form action='/login' method='POST'>
+                <div class="form-group">
+                    <input class="form-control" type='text' name='username' placeholder='username'>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary new-post-button">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<% include ./partials/footer %>

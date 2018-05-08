@@ -13,7 +13,7 @@
                     <h4><a><%= user.company.name%></a></h4>
                     <p><%= user.company.catchPhrase %></p>
                 </div>
-                <a href="/albums?userId=<%= user.id %>" class="btn btn-xs btn-primary">Photos</a>
+                <a href="/users/<%= user.id %>/albums" class="btn btn-xs btn-primary">Photos</a>
             </div>
         </div>
     </div>    

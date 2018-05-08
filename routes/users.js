@@ -31,4 +31,20 @@ router.get('/:id', (req, res) => {
     .then(() => res.render('users/show', {user:user}))
 })
 
+//Show user albums rout
+router.get('/:id/albums', (req, res) => {
+    //variable to store view albums page info
+    let albums = []
+    let user = []
+    //Get user and albums details
+    fetch('https://jsonplaceholder.typicode.com/users/' + req.params.id + '/albums')
+    .then(response => response.json())
+    .then(data => albums = data)
+    .then(() => fetch('https://jsonplaceholder.typicode.com/users/' + req.params.id))
+    .then(response => response.json())
+    .then(data => user = data)
+    //Render view show page
+    .then(() => res.render('albums/userAlbums', {albums:albums, user:user}))
+})
+
 module.exports = router

@@ -15,7 +15,7 @@
                         <p>Visit their website at  <a href="#"><%= user.website %></a></p>
                     </div>
                     <a href="/users/<%= user.id %>" class="btn btn-xs btn-primary">Profile</a>
-                    <a href="/photos?userId=<%= user.id %>" class="btn btn-xs btn-primary">Photo Albums</a>
+                    <a href="/users/<%= user.id %>/albums" class="btn btn-xs btn-primary">Photo Albums</a>
                 </div>
             </div>
         <% }) %>

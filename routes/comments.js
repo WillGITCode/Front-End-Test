@@ -27,9 +27,7 @@ router.post('/', (req, res) => {
     let body = req.body.body
     let id = comments.length-1
     let newComment = {name: name, body: body}
-    //push to global array because API doesn't actually create or update resources
-    //This will at least make it look legit in the app for demo purposes
-    comments.push(newComment)
+
 
     // POST adds a random id to the object sent
     fetch('https://jsonplaceholder.typicode.com/comments', {
@@ -44,8 +42,7 @@ router.post('/', (req, res) => {
         }
     })
     .then(response => response.json())
-    .then(json => console.log(json))
-    .then(res.redirect('/posts'))
+    .then(res.redirect('/posts/' + req.originalUrl.charAt(7)))
 })
 
 module.exports = router

@@ -2,9 +2,15 @@
 
 <div class="container">
 
-    <header class="jumbotron">
-        <h1>This Is The Albums Page</h1>
-    </header>
+    <% if(user){ %>
+        <header class="jumbotron">
+            <h1>These Are <%= user.username %> Albums</h1>
+        </header>
+    <% }  else  { %>
+        <header class="jumbotron">
+            <h1>This Is The Albums Page</h1>
+        </header>
+    <% } %> 
 
     <div class="row" style="display: flex; flex-wrap: wrap;">
         <% albums.forEach((album) => { %>

@@ -10,10 +10,12 @@ const middleware    = require("../middleware");
 //The app makes the required requests aswell
 //=====================================================//
 let posts = []
+let newComment
 
 fetch('https://jsonplaceholder.typicode.com/posts')
 .then(response => response.json()
 .then(data => posts = data))
+
 //====================================================//
 
 //Show index rout
@@ -69,7 +71,7 @@ router.get('/:id', (req, res) => {
     .then(response => response.json())
     .then(data => post.comments = data)
     //Render view show page
-    .then(() => res.render('posts/show', {post:post}))
+    .then(() => res.render('posts/show', {post:post, newComment:newComment}))
 })
 
 // Edit Post Route
